@@ -1,0 +1,1 @@
+mvn install:install-file -Dfile=lib/SortedListModel/SortedListModel.jar -DgroupId=com.sun -DartifactId=demo-list -Dversion=1.0 -Dpackaging=jar -DgeneratePom=true
