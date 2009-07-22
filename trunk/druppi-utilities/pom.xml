@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>net.druppi</groupId>
+    <artifactId>utilities</artifactId>
+    <packaging>pom</packaging>
+    <name>Druppi Utilities</name>
+    <version>0.1-SNAPSHOT</version>
+    <description>A set of utility classes used in my projects.</description>
+    <url>http://kenai.com/projects/druppi-utilities/</url>
+    <licenses>
+        <license>
+            <name>GNU Lesser General Public License</name>
+            <url>http://www.gnu.org/licenses/lgpl.html</url>
+            <distribution>manual</distribution>
+        </license>
+    </licenses>
+
+    <modules>
+        <module>tools</module>
+        <module>swing</module>
+        <module>plugin-app</module>
+    </modules>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <issueManagement>
+        <system>Bugzilla</system>
+        <url>http://kenai.com/bugzilla/buglist.cgi?product=druppi-utilities&amp;order=Importance&amp;limit=25</url>
+    </issueManagement>
+    <scm>
+        <connection>scm:https://kenai.com/svn/druppi-utilities~source-code-repository</connection>
+        <url>https://kenai.com/svn/druppi-utilities~source-code-repository/</url>
+    </scm>
+    <distributionManagement>
+        <repository>
+            <id>druppi-utilities-releases</id>
+            <name>Druppi Utilities Releases Repository</name>
+            <url>${deployPath}/druppi-utilities-maven/releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>druppi-utilities-snapshot</id>
+            <name>Druppi Utilities Snapshots Repository</name>
+            <url>${deployPath}/druppi-utilities-maven/snapshots/</url>
+            <uniqueVersion>true</uniqueVersion>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <developers>
+        <developer>
+            <id>osechet</id>
+            <name>Olivier Sechet</name>
+            <email>osechet@kenai.com</email>
+            <url>http://www.druppi.net/</url>
+            <timezone>+8</timezone>
+            <roles>
+                <role>Project Manager</role>
+                <role>Developer</role>
+            </roles>
+        </developer>
+    </developers>
+
+    <build>
+        <sourceDirectory>src/main/java</sourceDirectory>
+        <testSourceDirectory>src/test/java</testSourceDirectory>
+        <resources>
+            <resource>
+                <filtering>true</filtering>
+                <directory>src/main/resources</directory>
+                <excludes>
+                    <exclude>**/*.gif</exclude>
+                    <exclude>**/*.jpg</exclude>
+                    <exclude>**/*.jpeg</exclude>
+                    <exclude>**/*.png</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.gif</include>
+                    <include>**/*.jpg</include>
+                    <include>**/*.jpeg</include>
+                    <include>**/*.png</include>
+                </includes>
+            </resource>
+        </resources>
+        <testResources>
+            <testResource>
+                <directory>src/test/resources</directory>
+            </testResource>
+        </testResources>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.0.2</version>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>index</report>
+                            <report>dependencies</report>
+                            <report>project-team</report>
+                            <report>issue-tracking</report>
+                            <report>license</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+            <plugin>
+                <artifactId>maven-jxr-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <configuration>
+                    <links>
+                        <link>http://java.sun.com/javase/6/docs/api/</link>
+                        <link>http://junit.org/junit/javadoc/4.5/</link>
+                    </links>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <configuration>
+                    <configLocation>build-tools/config/checkstyle.xml</configLocation>
+                    <suppressionsLocation>build-tools/config/checkstyle-suppressions.xml</suppressionsLocation>
+                    <headerLocation>build-tools/config/header-java.txt</headerLocation>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jdepend-maven-plugin</artifactId>
+            </plugin>
+
+
+            <!-- ================ cobertura =============== -->
+            <!--
+                The report generated by this plugin is the result of executing
+                the Cobertura tool against your compiled classes to help you
+                determine how well the unit testing efforts have been, and can
+                then be used to identify which parts of your Java program are
+                lacking test coverage.
+            -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>cobertura-maven-plugin</artifactId>
+                <configuration>
+                    <maxmem>128m</maxmem>
+                    <instrumentation>
+                        <excludes>
+                            <exclude>**/*Test.class</exclude>
+                            <exclude>**/Abstract*.class</exclude>
+                        </excludes>
+                    </instrumentation>
+                    <check>
+                        <branchRate>${minimumCoverage}</branchRate>
+                        <lineRate>${minimumCoverage}</lineRate>
+                        <haltOnFailure>false</haltOnFailure>
+                        <totalBranchRate>${minimumCoverage}</totalBranchRate>
+                        <totalLineRate>${minimumCoverage}</totalLineRate>
+                        <packageLineRate>${minimumCoverage}</packageLineRate>
+                        <packageBranchRate>${minimumCoverage}</packageBranchRate>
+                        <!--
+                            <regexes> <regex>
+                            <pattern>com.example.reallyimportant.*</pattern>
+                            <branchRate>90</branchRate> <lineRate>80</lineRate>
+                            </regex> <regex>
+                            <pattern>com.example.boringcode.*</pattern>
+                            <branchRate>40</branchRate> <lineRate>30</lineRate>
+                            </regex> </regexes>
+                        -->
+                    </check>
+                </configuration>
+            </plugin>
+        </plugins>
+    </reporting>
+
+    <profiles>
+        <profile>
+            <id>release-profile</id>
+
+            <activation>
+                <property>
+                    <name>performRelease</name>
+                    <value>true</value>
+                </property>
+            </activation>
+
+            <build>
+                <plugins>
+                    <!-- Generate the source jar when installing -->
+                    <plugin>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <!-- Generate the javadoc jar when installing -->
+                    <plugin>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>attach-javadocs</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                                <configuration>
+                                    <links>
+                                        <link>${javadocLink}</link>
+                                        <link>http://junit.org/junit/javadoc/4.5/</link>
+                                    </links>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+</project>
