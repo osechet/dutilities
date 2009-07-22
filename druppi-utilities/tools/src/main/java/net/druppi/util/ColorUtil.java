@@ -45,6 +45,9 @@ public final class ColorUtil {
      * @return a color.
      */
     public static Color decode(final String str) {
+        if (str == null) {
+            return null;
+        }
         Color color = null;
         if (str.startsWith("#")) { //$NON-NLS-1$
             switch (str.length()) {
@@ -89,4 +92,32 @@ public final class ColorUtil {
         return color;
     }
 
+    /**
+     * Returns the hexadecimal representation of the given color.
+     *
+     * @param color the color to encode.
+     * @return the hexadecimal representation.
+     */
+    public static String toARGBHex(final Color color) {
+        StringBuilder buffer = new StringBuilder("#"); //$NON-NLS-1$
+        buffer.append(Integer.toHexString(color.getAlpha()));
+        buffer.append(Integer.toHexString(color.getRed()));
+        buffer.append(Integer.toHexString(color.getGreen()));
+        buffer.append(Integer.toHexString(color.getBlue()));
+        return buffer.toString();
+    }
+
+    /**
+     * Returns the hexadecimal representation of the given color.
+     *
+     * @param color the color to encode.
+     * @return the hexadecimal representation.
+     */
+    public static String toRGBHex(final Color color) {
+        StringBuilder buffer = new StringBuilder("#"); //$NON-NLS-1$
+        buffer.append(Integer.toHexString(color.getRed()));
+        buffer.append(Integer.toHexString(color.getGreen()));
+        buffer.append(Integer.toHexString(color.getBlue()));
+        return buffer.toString();
+    }
 }
