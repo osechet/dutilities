@@ -5,7 +5,7 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>net.druppi</groupId>
-    <artifactId>utilities</artifactId>
+    <artifactId>dutilities</artifactId>
     <packaging>pom</packaging>
     <name>Druppi Utilities</name>
     <version>0.1-SNAPSHOT</version>
@@ -20,8 +20,8 @@
     </licenses>
 
     <modules>
-        <module>tools</module>
-        <module>swing</module>
+        <module>dtools</module>
+        <module>dswing</module>
         <module>plugin-app</module>
     </modules>
 
