@@ -5,7 +5,7 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <parent>
         <groupId>net.druppi</groupId>
-        <artifactId>utilities</artifactId>
+        <artifactId>dutilities</artifactId>
         <version>0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -26,7 +26,7 @@
         </dependency>
         <dependency>
             <groupId>net.druppi</groupId>
-            <artifactId>tools</artifactId>
+            <artifactId>dtools</artifactId>
             <version>${version}</version>
         </dependency>
     </dependencies>

@@ -30,6 +30,7 @@ import javax.swing.ActionMap;
 import net.druppi.util.Preferences;
 
 import org.platonos.pluginengine.PluginEngine;
+import org.platonos.pluginengine.PluginEngineException;
 import org.platonos.pluginengine.logging.ILogger;
 import org.platonos.pluginengine.logging.LoggerLevel;
 
@@ -127,7 +128,12 @@ public abstract class PluginApp {
         if (dirList != null) {
             StringTokenizer st = new StringTokenizer(dirList, ","); //$NON-NLS-1$
             while (st.hasMoreTokens()) {
-                pluginEngine.loadPlugins(st.nextToken());
+                String path = st.nextToken();
+                try {
+                    pluginEngine.loadPlugin(path);
+                } catch (PluginEngineException ex) {
+                    LOGGER.log(Level.WARNING, "Impossible to load the plugin in " + path, ex); //$NON-NLS-1$
+                }
             }
         } else {
             pluginEngine.loadPlugins("plugins"); //$NON-NLS-1$

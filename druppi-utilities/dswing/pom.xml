@@ -5,13 +5,13 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <parent>
         <groupId>net.druppi</groupId>
+        <artifactId>dutilities</artifactId>
         <version>0.1-SNAPSHOT</version>
-        <artifactId>utilities</artifactId>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <groupId>net.druppi</groupId>
-    <artifactId>tools</artifactId>
-    <name>Druppi Tools</name>
+    <artifactId>dswing</artifactId>
+    <name>Druppi Swing</name>
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -20,9 +20,14 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-        	<groupId>commons-lang</groupId>
-        	<artifactId>commons-lang</artifactId>
-        	<version>2.4</version>
+            <groupId>com.sun</groupId>
+            <artifactId>demo-list</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>net.druppi</groupId>
+            <artifactId>dtools</artifactId>
+            <version>${version}</version>
         </dependency>
     </dependencies>
 </project>
