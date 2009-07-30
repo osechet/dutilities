@@ -44,7 +44,7 @@
             <url>${deployPath}/druppi-utilities-maven/releases/</url>
         </repository>
         <snapshotRepository>
-            <id>druppi-utilities-snapshot</id>
+            <id>druppi-utilities-snapshots</id>
             <name>Druppi Utilities Snapshots Repository</name>
             <url>${deployPath}/druppi-utilities-maven/snapshots/</url>
             <uniqueVersion>true</uniqueVersion>
