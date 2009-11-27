@@ -1,7 +1,7 @@
 /*
  * NoWrapParagraphView.java
  *
- * Copyright © 2003-2009 Stanislav Lapitsky. All Rights Reserved.
+ * Copyright (C) 2003-2009 Stanislav Lapitsky. All Rights Reserved.
  * Copyright (C) 2009 Olivier Sechet
  *
  * This library is free software; you can redistribute it and/or modify it
