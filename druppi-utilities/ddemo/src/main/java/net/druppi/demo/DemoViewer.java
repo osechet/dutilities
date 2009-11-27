@@ -65,6 +65,7 @@ public class DemoViewer extends javax.swing.JPanel {
         demoManager.setDemoList((DemoList) this.tableModel);
         initComponents();
 
+        this.demosTable.setShowGrid(false);
         // Add a data listener to ensure one demo is always selected
         this.tableModel.addTableModelListener(new TableModelListener() {
 
@@ -92,15 +93,17 @@ public class DemoViewer extends javax.swing.JPanel {
                     return;
                 }
                 int index = demosTable.getSelectionModel().getMinSelectionIndex();
-                Demo demo = (Demo) tableModel.getValueAt(index, 0);
-                guiPanel.removeAll();
-                guiPanel.add(demo.getPanel());
-                guiPanel.revalidate();
-                guiPanel.repaint();
+                if (index >= 0) {
+                    Demo demo = (Demo) tableModel.getValueAt(index, 0);
+                    guiPanel.removeAll();
+                    guiPanel.add(demo.getPanel());
+                    guiPanel.revalidate();
+                    guiPanel.repaint();
 
-                String source = demo.getSource();
-                sourceEditorPane.setText(source);
-                sourceEditorPane.setCaretPosition(0);
+                    String source = demo.getSource();
+                    sourceEditorPane.setText(source);
+                    sourceEditorPane.setCaretPosition(0);
+                }
             }
         });
     }

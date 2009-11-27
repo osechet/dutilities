@@ -1,5 +1,5 @@
 /*
- * ExampleDemo.java
+ * TestDemo.java
  *
  * Copyright (C) 2009 Olivier Sechet
  *
@@ -29,7 +29,7 @@ import net.druppi.demo.AbstractDemo;
  * @author Olivier Sechet
  * @version 1.0 - Nov 25, 2009
  */
-public class ExampleDemo extends AbstractDemo {
+public class TestDemo extends AbstractDemo {
 
     /** The associated panel. */
     private JPanel panel;
@@ -37,18 +37,18 @@ public class ExampleDemo extends AbstractDemo {
     /**
      * Creates a new ExampleDemo.
      */
-    public ExampleDemo() {
-        super("Example Demo"); //$NON-NLS-1$
+    public TestDemo() {
+        super("Test Demo"); //$NON-NLS-1$
         createPanel();
     }
 
     /**
-    *
-    */
-   private void createPanel() {
-       panel = new JPanel();
-       panel.add(new JLabel("Hello World!")); //$NON-NLS-1$
-   }
+     *
+     */
+    private void createPanel() {
+        panel = new JPanel();
+        panel.add(new JLabel("Test! Test!")); //$NON-NLS-1$
+    }
 
     /**
      * {@inheritDoc}
