@@ -30,7 +30,7 @@ import java.net.URL;
  * given resource name.
  *
  * @author Olivier Sechet
- * @version 1.0 - Sep 3, 2009
+ * @version 1.1 - Nov 26, 2009
  */
 public abstract class AbstractDemo implements Demo {
 
@@ -99,5 +99,36 @@ public abstract class AbstractDemo implements Demo {
         } else {
             source = DemoApplication.getApplication().getContext().getResourceMap(AbstractDemo.class).getString("AbstractDemo.noSourceCode"); //$NON-NLS-1$
         }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean equals(final Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (!(obj instanceof AbstractDemo)) {
+            return false;
+        }
+        AbstractDemo that = (AbstractDemo) obj;
+        return this.name.equals(that.name);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public int hashCode() {
+        return name.hashCode();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String toString() {
+        return getName();
     }
 }

@@ -1,5 +1,5 @@
 /*
- * DemoListModel.java
+ * LoadDemosTask.java
  *
  * Copyright (C) 2009 Olivier Sechet
  *
@@ -18,47 +18,29 @@
  */
 package net.druppi.demo;
 
-import javax.swing.AbstractListModel;
+import org.jdesktop.application.Task;
 
 /**
  * @author Olivier Sechet
- * @version 1.0 - Sep 3, 2009
+ * @version 1.0 - Nov 27, 2009
  */
-@SuppressWarnings("serial")
-public class DemoListModel extends AbstractListModel {
-
-    /** The associated DemoManager. */
-    private final DemoManager demoManager;
+public class LoadDemosTask extends Task<Object, Object> {
 
     /**
-     * Creates a new DemoListModel.
-     *
-     * @param demoManager the associated DemoManager.
+     * Creates a new LoadDemosTask.
      */
-    public DemoListModel(final DemoManager demoManager) {
-        this.demoManager = demoManager;
+    public LoadDemosTask() {
+        super(DemoApplication.getApplication());
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public Object getElementAt(final int index) {
-        if (demoManager == null) {
-            return null;
-        }
-        return demoManager.getDemo(index).getName();
+    protected Object doInBackground() throws Exception {
+        message("startMessage");  //$NON-NLS-1$
+        DemoApplication.getApplication().getDemoManager().loadDemos();
+        message("finishedMessage");  //$NON-NLS-1$
+        return null;
     }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public int getSize() {
-        if (demoManager == null) {
-            return 0;
-        }
-        return demoManager.getDemosCount();
-    }
-
 }
