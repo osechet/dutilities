@@ -20,11 +20,6 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>com.sun</groupId>
-            <artifactId>demo-list</artifactId>
-            <version>1.0</version>
-        </dependency>
-        <dependency>
             <groupId>net.druppi</groupId>
             <artifactId>dtools</artifactId>
             <version>${version}</version>
