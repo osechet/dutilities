@@ -24,7 +24,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 
-
 /**
  * A default implementation of a Demo panel. It automatically loads the source code from a
  * given resource name.
@@ -44,11 +43,22 @@ public abstract class AbstractDemo implements Demo {
     private String source;
 
     /**
+     * Creates a new AbstractDemo. The resource name is automatically build from the class
+     * name.
+     *
+     * @param name the demo's name.
+     */
+    public AbstractDemo(final String name) {
+        this.name = name;
+        this.resourceName = "/" + getClass().getName().replace('.', '/'); //$NON-NLS-1$
+    }
+
+    /**
      * Creates a new AbstractDemo.
      *
      * @param name the demo's name.
      * @param resourceName the path to the resource that contains the source code of the
-     * demo.
+     *        demo.
      */
     public AbstractDemo(final String name, final String resourceName) {
         this.name = name;
@@ -97,7 +107,8 @@ public abstract class AbstractDemo implements Demo {
                 ex.printStackTrace();
             }
         } else {
-            source = DemoApplication.getApplication().getContext().getResourceMap(AbstractDemo.class).getString("AbstractDemo.noSourceCode"); //$NON-NLS-1$
+            source = DemoApplication.getApplication().getContext().getResourceMap(
+                    AbstractDemo.class).getString("AbstractDemo.noSourceCode"); //$NON-NLS-1$
         }
     }
 
