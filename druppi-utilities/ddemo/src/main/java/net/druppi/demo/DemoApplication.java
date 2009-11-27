@@ -25,7 +25,7 @@ import org.jdesktop.application.SingleFrameApplication;
  * The main class of the application.
  *
  * @author Olivier Sechet
- * @version 1.0 - Nov 25, 2009
+ * @version 1.1 - Nov 26, 2009
  */
 public class DemoApplication extends SingleFrameApplication {
 
@@ -37,8 +37,9 @@ public class DemoApplication extends SingleFrameApplication {
      */
     @Override
     protected void startup() {
-        demoManager.loadDemos();
         show(new DemoView(this));
+        LoadDemosTask task = new LoadDemosTask();
+        getContext().getTaskService().execute(task);
     }
 
     /**
