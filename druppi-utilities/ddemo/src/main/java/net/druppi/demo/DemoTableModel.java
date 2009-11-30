@@ -19,6 +19,7 @@
 package net.druppi.demo;
 
 import java.awt.EventQueue;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Vector;
 
 import javax.swing.table.DefaultTableModel;
@@ -27,7 +28,7 @@ import javax.swing.table.DefaultTableModel;
  * A TableModel used to display the content of a DemoManager.
  *
  * @author Olivier Sechet
- * @version 1.0 - Nov 26, 2009
+ * @version 1.1 - Nov 27, 2009
  */
 @SuppressWarnings("serial")
 class DemoTableModel extends DefaultTableModel implements DemoList {
@@ -36,7 +37,7 @@ class DemoTableModel extends DefaultTableModel implements DemoList {
      * Creates a new DemoTableModel.
      */
     public DemoTableModel() {
-        super(new Object[] {"Demo"}, 0); //$NON-NLS-1$
+        super(new Object[] { "Demo" }, 0); //$NON-NLS-1$
     }
 
     /**
@@ -44,21 +45,58 @@ class DemoTableModel extends DefaultTableModel implements DemoList {
      */
     @Override
     public void add(final Demo demo) {
-        EventQueue.invokeLater(new Runnable() {
+        try {
+            // We need to wait to ensure another call will not be done before the
+            // execution of the runnable.
+            EventQueue.invokeAndWait(new Runnable() {
 
-            @Override
-            public void run() {
-                addRow(new Object[] { demo });
-            }
-        });
+                @Override
+                public void run() {
+                    addRow(new Object[] { demo });
+                }
+            });
+        } catch (final InterruptedException ex) {
+            // XXX: what to do?
+            ex.printStackTrace();
+        } catch (final InvocationTargetException ex) {
+            // XXX: what to do?
+            ex.printStackTrace();
+        }
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public boolean contains(Demo demo) {
-        return dataVector.contains(demo);
+    public boolean contains(final Demo demo) {
+        return indexOf(demo) >= 0;
+    }
+
+    /**
+     * Returns the index of the specified demo in the list.
+     *
+     * @param demo the demo to look for.
+     * @return the index of the demo or -1 if the demo is not in the list.
+     */
+    @SuppressWarnings("unchecked")
+    private int indexOf(final Demo demo) {
+        int elementCount = dataVector.size();
+        if (demo == null) {
+            for (int i = 0; i < elementCount; i++) {
+                Vector<Object> rowData = (Vector<Object>) dataVector.get(i);
+                if (rowData.get(0) == null) {
+                    return i;
+                }
+            }
+        } else {
+            for (int i = 0; i < elementCount; i++) {
+                Vector<Object> rowData = (Vector<Object>) dataVector.get(i);
+                if (demo.equals(rowData.get(0))) {
+                    return i;
+                }
+            }
+        }
+        return -1;
     }
 
     /**
