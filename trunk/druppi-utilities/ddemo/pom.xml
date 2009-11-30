@@ -17,6 +17,31 @@
         <exec.mainClass>net.druppi.demo.DemoApplication</exec.mainClass>
     </properties>
 
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>${exec.mainClass}</mainClass>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>lib/</classpathPrefix>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <descriptors>
+                        <descriptor>src/main/assembly/standalone.xml</descriptor>
+                    </descriptors>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -30,14 +55,14 @@
             <version>1.03</version>
         </dependency>
         <dependency>
-        	<groupId>net.druppi</groupId>
-        	<artifactId>dtools</artifactId>
-        	<version>${version}</version>
+            <groupId>net.druppi</groupId>
+            <artifactId>dtools</artifactId>
+            <version>${version}</version>
         </dependency>
         <dependency>
-        	<groupId>net.druppi</groupId>
-        	<artifactId>dswing</artifactId>
-        	<version>${version}</version>
+            <groupId>net.druppi</groupId>
+            <artifactId>dswing</artifactId>
+            <version>${version}</version>
         </dependency>
     </dependencies>
 </project>
