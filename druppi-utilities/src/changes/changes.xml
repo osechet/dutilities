@@ -16,6 +16,10 @@
                 dev="osechet"
                 type="update"
                 date="2010-08-26">Updated Checkstyle configuration</action>
+            <action
+                dev="osechet"
+                type="add"
+                date="2010-08-26">Added logs configuration dialogs</action>
         </release>
     </body>
 </document>
