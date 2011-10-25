@@ -5,7 +5,7 @@
     <artifactId>dutilities</artifactId>
     <packaging>pom</packaging>
     <name>Druppi Utilities</name>
-    <version>0.1</version>
+    <version>0.2-SNAPSHOT</version>
     <description>A set of utility classes used in my projects.</description>
     <url>http://kenai.com/projects/druppi-utilities/</url>
     
@@ -80,9 +80,9 @@
     
     <!-- SCM -->
     <scm>
-        <url>https://kenai.com/svn/druppi-utilities~source-code-repository/tags/dutilities-0.1</url>
-        <connection>scm:svn:http://svn.kenai.com/svn/druppi-utilities~source-code-repository/tags/dutilities-0.1</connection>
-        <developerConnection>scm:svn:https://svn.kenai.com/svn/druppi-utilities~source-code-repository/tags/dutilities-0.1</developerConnection>
+        <url>https://kenai.com/svn/druppi-utilities~source-code-repository/</url>
+        <connection>scm:svn:http://svn.kenai.com/svn/druppi-utilities~source-code-repository</connection>
+        <developerConnection>scm:svn:https://svn.kenai.com/svn/druppi-utilities~source-code-repository</developerConnection>
     </scm>
     
     <!-- Distribution Management -->
