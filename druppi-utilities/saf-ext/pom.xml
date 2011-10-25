@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>net.druppi</groupId>
-        <version>0.1-SNAPSHOT</version>
         <artifactId>dutilities</artifactId>
+        <version>0.1-SNAPSHOT</version>
     </parent>
-    <modelVersion>4.0.0</modelVersion>
-    <groupId>net.druppi</groupId>
     <artifactId>saf-ext</artifactId>
     <name>SAF Extension</name>
     <description>This project provides extensions for the Swing Application Framework (SAF).</description>
@@ -15,23 +14,23 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.8.1</version>
+            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.jdesktop.bsaf</groupId>
             <artifactId>bsaf</artifactId>
-            <version>1.9-SNAPSHOT</version>
+            <version>${bsaf.version}</version>
         </dependency>
         <dependency>
             <groupId>org.swinglabs</groupId>
             <artifactId>swingx</artifactId>
-            <version>1.6.1</version>
+            <version>${swingx.version}</version>
         </dependency>
         <dependency>
-        	<groupId>com.sun</groupId>
-        	<artifactId>jlfgr</artifactId>
-        	<version>1.0</version>
+            <groupId>com.sun</groupId>
+            <artifactId>jlfgr</artifactId>
+            <version>${jlfgr.version}</version>
         </dependency>
     </dependencies>
 </project>

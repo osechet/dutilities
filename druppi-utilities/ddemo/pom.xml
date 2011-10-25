@@ -3,23 +3,25 @@
     xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>net.druppi</groupId>
         <version>0.1-SNAPSHOT</version>
         <artifactId>dutilities</artifactId>
     </parent>
-    <modelVersion>4.0.0</modelVersion>
-    <groupId>net.druppi</groupId>
     <artifactId>ddemo</artifactId>
     <name>Druppi Demo</name>
 
+    <!-- Properties -->
     <properties>
         <exec.mainClass>net.druppi.demo.DemoApplication</exec.mainClass>
     </properties>
 
+    <!-- Build -->
     <build>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
                 <configuration>
                     <archive>
@@ -32,6 +34,7 @@
                 </configuration>
             </plugin>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <configuration>
                     <descriptors>
@@ -42,27 +45,50 @@
         </plugins>
     </build>
 
+    <!-- Dependencies -->
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.8.1</version>
+            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>net.java.dev.appframework</groupId>
-            <artifactId>appframework</artifactId>
-            <version>1.03</version>
+            <groupId>org.jdesktop.bsaf</groupId>
+            <artifactId>bsaf</artifactId>
+            <version>${bsaf.version}</version>
         </dependency>
         <dependency>
             <groupId>net.druppi</groupId>
             <artifactId>dtools</artifactId>
-            <version>${version}</version>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>net.druppi</groupId>
             <artifactId>dswing</artifactId>
-            <version>${version}</version>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
+
+    <!-- Reporting -->
+    <reporting>
+        <plugins>
+            <!-- ================ Checkstyle report =============== -->
+            <!-- Generate the checkstyle report. The configuration files must be located in
+                the build-tools/config directory. -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>${checkstyle.version}</version>
+                <configuration>
+                    <configLocation>${project.parent.basedir}/build-tools/config/checkstyle.xml</configLocation>
+                    <suppressionsLocation>${project.parent.basedir}/build-tools/config/checkstyle-suppressions.xml</suppressionsLocation>
+                    <headerLocation>${project.parent.basedir}/build-tools/config/java.header</headerLocation>
+                    <!-- Workaround for the MCHECKSTYLE-134 -->
+                    <suppressionsFileExpression>checkstyle.suppressions.file.donothing</suppressionsFileExpression>
+                    <propertyExpansion>checkstyle.suppressions.file=${project.parent.basedir}/build-tools/config/checkstyle-suppressions.xml</propertyExpansion>
+                </configuration>
+            </plugin>
+        </plugins>
+    </reporting>
 </project>

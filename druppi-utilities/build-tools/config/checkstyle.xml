@@ -123,7 +123,7 @@
     <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="inherit"/>
   </module>
   <module name="RegexpHeader">
-    <property name="headerFile" value="${checkstyle.header.file.java}"/>
+    <property name="headerFile" value="${checkstyle.header.file}"/>
     <property name="fileExtensions" value="java"/>
   </module>
   <module name="SuppressionCommentFilter">

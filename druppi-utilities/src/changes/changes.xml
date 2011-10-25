@@ -20,6 +20,10 @@
                 dev="osechet"
                 type="add"
                 date="2010-08-26">Added logs configuration dialogs</action>
+            <action
+                dev="osechet"
+                type="update"
+                date="2011-10-25">Updated Eclipse projects configuration.</action>
         </release>
     </body>
 </document>
