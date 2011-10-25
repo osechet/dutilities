@@ -5,7 +5,7 @@
     <artifactId>dutilities</artifactId>
     <packaging>pom</packaging>
     <name>Druppi Utilities</name>
-    <version>0.1-SNAPSHOT</version>
+    <version>0.1</version>
     <description>A set of utility classes used in my projects.</description>
     <url>http://kenai.com/projects/druppi-utilities/</url>
     
