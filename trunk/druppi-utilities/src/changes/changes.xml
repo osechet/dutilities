@@ -28,6 +28,10 @@
                 dev="osechet"
                 type="fix"
                 date="2011-10-25">Fixed SCM definition.</action>
+            <action
+                dev="osechet"
+                type="fix"
+                date="2011-10-25">Cancelled failed release.</action>
         </release>
     </body>
 </document>

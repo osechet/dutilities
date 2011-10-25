@@ -4,7 +4,7 @@
     <parent>
         <groupId>net.druppi</groupId>
         <artifactId>dutilities</artifactId>
-        <version>0.2-SNAPSHOT</version>
+        <version>0.1-SNAPSHOT</version>
     </parent>
     <artifactId>dtools</artifactId>
     <name>Druppi Tools</name>
