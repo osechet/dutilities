@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>net.druppi</groupId>
+        <artifactId>dutilities</artifactId>
+        <version>0.1</version>
+    </parent>
+    <artifactId>dswing</artifactId>
+    <name>Druppi Swing</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>net.druppi</groupId>
+            <artifactId>dtools</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+
+    <!-- Reporting -->
+    <reporting>
+        <plugins>
+            <!-- ================ Checkstyle report =============== -->
+            <!-- Generate the checkstyle report. The configuration files must be located in
+                the build-tools/config directory. -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>${checkstyle.version}</version>
+                <configuration>
+                    <configLocation>${project.parent.basedir}/build-tools/config/checkstyle.xml</configLocation>
+                    <suppressionsLocation>${project.parent.basedir}/build-tools/config/checkstyle-suppressions.xml</suppressionsLocation>
+                    <headerLocation>${project.parent.basedir}/build-tools/config/java.header</headerLocation>
+                    <!-- Workaround for the MCHECKSTYLE-134 -->
+                    <suppressionsFileExpression>checkstyle.suppressions.file.donothing</suppressionsFileExpression>
+                    <propertyExpansion>checkstyle.suppressions.file=${project.parent.basedir}/build-tools/config/checkstyle-suppressions.xml</propertyExpansion>
+                </configuration>
+            </plugin>
+        </plugins>
+    </reporting>
+</project>
