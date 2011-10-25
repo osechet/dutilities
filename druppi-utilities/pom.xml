@@ -84,8 +84,8 @@
     <!-- SCM -->
     <scm>
         <url>https://kenai.com/svn/druppi-utilities~source-code-repository/</url>
-        <connection>scm:svn:http://kenai.com/svn/druppi-utilities~source-code-repository</connection>
-        <developerConnection>scm:svn:https://kenai.com/svn/druppi-utilities~source-code-repository</developerConnection>
+        <connection>scm:svn:http://svn.kenai.com/svn/druppi-utilities~source-code-repository</connection>
+        <developerConnection>scm:svn:https://svn.kenai.com/svn/druppi-utilities~source-code-repository</developerConnection>
     </scm>
     
     <!-- Distribution Management -->
