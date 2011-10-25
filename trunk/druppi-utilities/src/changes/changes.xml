@@ -24,6 +24,10 @@
                 dev="osechet"
                 type="update"
                 date="2011-10-25">Updated Eclipse projects configuration.</action>
+            <action
+                dev="osechet"
+                type="fix"
+                date="2011-10-25">Fixed SCM definition.</action>
         </release>
     </body>
 </document>
