@@ -1,0 +1,4 @@
+mvn install:install-file -Dfile=lib/SortedListModel/SortedListModel.jar -DgroupId=com.sun -DartifactId=demo-list -Dversion=1.0 -Dpackaging=jar -DgeneratePom=true
+mvn install:install-file -Dfile=lib/PluginEngine/pluginengine-1.0.jar -DgroupId=org.platonos -DartifactId=pluginengine -Dversion=1.0 -Dpackaging=jar -DgeneratePom=true
+mvn install:install-file -Dfile=lib/PluginEngine/pluginengine-1.0-sources.jar -DgroupId=org.platonos -DartifactId=pluginengine -Dversion=1.0 -Dpackaging=jar -Dclassifier=sources
+mvn install:install-file -Dfile=lib/PluginEngine/pluginengine-1.0-javadoc.jar -DgroupId=org.platonos -DartifactId=pluginengine -Dversion=1.0 -Dpackaging=jar -Dclassifier=javadoc

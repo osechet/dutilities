@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>net.druppi</groupId>
+    <artifactId>dutilities</artifactId>
+    <packaging>pom</packaging>
+    <name>Druppi Utilities</name>
+    <version>0.1</version>
+    <description>A set of utility classes used in my projects.</description>
+    <url>http://kenai.com/projects/druppi-utilities/</url>
+    
+    <!-- Licenses -->
+    <licenses>
+        <license>
+            <name>GNU Lesser General Public License</name>
+            <url>http://www.gnu.org/licenses/lgpl.html</url>
+            <distribution>manual</distribution>
+        </license>
+    </licenses>
+
+    <!-- Modules -->
+    <modules>
+        <module>dtools</module>
+        <module>dswing</module>
+        <module>saf-ext</module>
+        <module>ddemo</module>
+    </modules>
+
+    <!-- Properties -->
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <targetJdk>1.6</targetJdk>
+        <changes.addActionDate>true</changes.addActionDate>
+        
+        <!-- Dependencies version -->
+        <bsaf.version>1.9</bsaf.version>
+        <commons-lang.version>2.5</commons-lang.version>
+        <commons-logging.version>1.1.1</commons-logging.version>
+        <jlfgr.version>1.0</jlfgr.version>
+        <junit.version>4.8.2</junit.version>
+        <swingx.version>1.6.1</swingx.version>
+
+        <!-- Plug-ins Version -->
+        <antrun.version>1.6</antrun.version>
+        <assembly.version>2.2.1</assembly.version>
+        <build-helper.version>1.5</build-helper.version>
+        <changes.version>2.4</changes.version>
+        <clean.version>2.4.1</clean.version>
+        <checkstyle.version>2.6</checkstyle.version>
+        <cobertura.version>2.4</cobertura.version>
+        <compiler.version>2.3.2</compiler.version>
+        <dashboard.version>1.0.0-beta-1</dashboard.version>
+        <dependency.version>2.2</dependency.version>
+        <deploy.version>2.5</deploy.version>
+        <findbugs.version>2.3.2</findbugs.version>
+        <install.version>2.3.1</install.version>
+        <jar.version>2.3.1</jar.version>
+        <javadoc.version>2.7</javadoc.version>
+        <jdepend.version>2.0-beta-2</jdepend.version>
+        <jxr.version>2.2</jxr.version>
+        <lifecycle-mapping.version>1.0.0</lifecycle-mapping.version>
+        <log4j.version>1.2.16</log4j.version>
+        <pmd.version>2.5</pmd.version>
+        <project-info-reports.version>2.2</project-info-reports.version>
+        <release.version>2.2.1</release.version>
+        <reports.version>2.3.1</reports.version>
+        <resources.version>2.5</resources.version>
+        <site.version>3.0-beta-3</site.version>
+        <source.version>2.1.2</source.version>
+        <surefire.version>2.8</surefire.version>
+        <surefire-report.version>2.8</surefire-report.version>
+        <war.version>2.1.1</war.version>
+    </properties>
+
+    <!-- Issue Management -->
+    <issueManagement>
+        <system>Bugzilla</system>
+        <url>http://kenai.com/bugzilla/buglist.cgi?product=druppi-utilities</url>
+    </issueManagement>
+    
+    <!-- SCM -->
+    <scm>
+        <url>https://kenai.com/svn/druppi-utilities~source-code-repository/tags/dutilities-0.1</url>
+        <connection>scm:svn:http://svn.kenai.com/svn/druppi-utilities~source-code-repository/tags/dutilities-0.1</connection>
+        <developerConnection>scm:svn:https://svn.kenai.com/svn/druppi-utilities~source-code-repository/tags/dutilities-0.1</developerConnection>
+    </scm>
+    
+    <!-- Distribution Management -->
+    <distributionManagement>
+        <repository>
+            <id>druppi-utilities-releases</id>
+            <name>Druppi Utilities Releases Repository</name>
+            <url>${deployPath}/druppi-utilities-maven/releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>druppi-utilities-snapshots</id>
+            <name>Druppi Utilities Snapshots Repository</name>
+            <url>${deployPath}/druppi-utilities-maven/snapshots/</url>
+            <uniqueVersion>true</uniqueVersion>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <!-- Developers -->
+    <developers>
+        <developer>
+            <id>osechet</id>
+            <name>Olivier Sechet</name>
+            <email>osechet@kenai.com</email>
+            <url>http://www.druppi.net/</url>
+            <timezone>+8</timezone>
+            <roles>
+                <role>Project Manager</role>
+                <role>Developer</role>
+            </roles>
+        </developer>
+    </developers>
+
+    <!-- Build -->
+    <build>
+        <sourceDirectory>src/main/java</sourceDirectory>
+        <testSourceDirectory>src/test/java</testSourceDirectory>
+        <resources>
+            <resource>
+                <filtering>true</filtering>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
+        <testResources>
+            <testResource>
+                <directory>src/test/resources</directory>
+            </testResource>
+        </testResources>
+
+        <!-- Plugins -->
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${targetJdk}</source>
+                    <target>${targetJdk}</target>
+                </configuration>
+            </plugin>
+        </plugins>
+
+        <!-- Plugin Management -->
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>build-helper-maven-plugin</artifactId>
+                    <version>${build-helper.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-antrun-plugin</artifactId>
+                    <version>${antrun.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <version>${assembly.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-checkstyle-plugin</artifactId>
+                    <version>${checkstyle.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-clean-plugin</artifactId>
+                    <version>${clean.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${compiler.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>${deploy.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-install-plugin</artifactId>
+                    <version>${install.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>${jar.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>${javadoc.version}</version>
+                    <configuration>
+                        <links>
+                            <link>http://download-llnw.oracle.com/javase/6/docs/api/</link>
+                            <link>http://junit.sourceforge.net/javadoc/</link>
+                        </links>
+                        <!-- The junit is needed in the classpath to generate test Javadoc -->
+                        <dependency>
+                            <groupId>junit</groupId>
+                            <artifactId>junit</artifactId>
+                            <version>${junit.version}</version>
+                        </dependency>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-release-plugin</artifactId>
+                    <version>${release.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>${resources.version}</version>
+                </plugin>
+                <!-- Site -->
+                <!--
+                    Specify where the children will find site resources.
+                 -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-site-plugin</artifactId>
+                    <version>${site.version}</version>
+                    <configuration>
+                        <siteDirectory>${project.parent.basedir}/src/site</siteDirectory>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>${source.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${surefire.version}</version>
+                    <configuration>
+                        <excludes>
+                            <exclude>**/interactive/*.java</exclude>
+                        </excludes>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>${war.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <!-- Reporting -->
+    <reporting>
+        <plugins>
+            <!-- ================ Project Information =============== -->
+            <!--
+                Creates pages given various information about the project.
+            -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>${project-info-reports.version}</version>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>index</report>
+                            <report>dependencies</report>
+                            <report>project-team</report>
+                            <report>issue-tracking</report>
+                            <report>license</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+            <!-- ================ JRX =============== -->
+            <!--
+                Generate a HTML page for each Java source file. These pages can then be
+                used by others reports.
+            -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jxr-plugin</artifactId>
+                <version>${jxr.version}</version>
+            </plugin>
+            <!-- ================ Javadoc =============== -->
+            <!--
+                Generate the Javadoc documentation.
+            -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${javadoc.version}</version>
+                <configuration>
+                    <links>
+                        <link>${javadocLink}</link>
+                        <link>http://junit.org/junit/javadoc/4.5/</link>
+                    </links>
+                </configuration>
+            </plugin>
+            <!-- ================ Checkstyle report =============== -->
+            <!-- Generate the checkstyle report. The configuration files must be located in
+                the build-tools/config directory. -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>${checkstyle.version}</version>
+                <inherited>false</inherited>
+                <configuration>
+                    <configLocation>${project.basedir}/build-tools/config/checkstyle.xml</configLocation>
+                    <suppressionsLocation>${project.basedir}/build-tools/config/checkstyle-suppressions.xml</suppressionsLocation>
+                    <headerLocation>${project.basedir}/build-tools/config/java.header</headerLocation>
+                    <!-- Workaround for the MCHECKSTYLE-134 -->
+                    <suppressionsFileExpression>checkstyle.suppressions.file.donothing</suppressionsFileExpression>
+                    <propertyExpansion>checkstyle.suppressions.file=${project.basedir}/build-tools/config/checkstyle-suppressions.xml</propertyExpansion>
+                </configuration>
+            </plugin>
+            <!-- ================ JDepend report =============== -->
+            <!--
+                Generate the jDepend report.
+            -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jdepend-maven-plugin</artifactId>
+                <version>${jdepend.version}</version>
+            </plugin>
+
+
+            <!-- ================ Cobertura =============== -->
+            <!--
+                The report generated by this plugin is the result of executing
+                the Cobertura tool against your compiled classes to help you
+                determine how well the unit testing efforts have been, and can
+                then be used to identify which parts of your Java program are
+                lacking test coverage.
+            -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>cobertura-maven-plugin</artifactId>
+                <version>${cobertura.version}</version>
+                <configuration>
+                    <maxmem>128m</maxmem>
+                    <instrumentation>
+                        <excludes>
+                            <exclude>**/*Test.class</exclude>
+                            <exclude>**/Abstract*.class</exclude>
+                        </excludes>
+                    </instrumentation>
+                    <check>
+                        <branchRate>${minimumCoverage}</branchRate>
+                        <lineRate>${minimumCoverage}</lineRate>
+                        <haltOnFailure>false</haltOnFailure>
+                        <totalBranchRate>${minimumCoverage}</totalBranchRate>
+                        <totalLineRate>${minimumCoverage}</totalLineRate>
+                        <packageLineRate>${minimumCoverage}</packageLineRate>
+                        <packageBranchRate>${minimumCoverage}</packageBranchRate>
+                        <!--
+                            <regexes> <regex>
+                            <pattern>com.example.reallyimportant.*</pattern>
+                            <branchRate>90</branchRate> <lineRate>80</lineRate>
+                            </regex> <regex>
+                            <pattern>com.example.boringcode.*</pattern>
+                            <branchRate>40</branchRate> <lineRate>30</lineRate>
+                            </regex> </regexes>
+                        -->
+                    </check>
+                </configuration>
+            </plugin>
+        </plugins>
+    </reporting>
+
+    <profiles>
+        <!-- Release profile -->
+        <!--
+            The release profile can be used when installing and deploying the build
+            product. It generates the sources jar and the Javadoc jar that will be
+            installed with the binary jar.
+            The profile is activated by enabling the performRelease property:
+                -DperformRelease=true
+        -->
+        <profile>
+            <id>release-profile</id>
+
+            <activation>
+                <property>
+                    <name>performRelease</name>
+                    <value>true</value>
+                </property>
+            </activation>
+
+            <build>
+                <plugins>
+                    <!-- Generate the source jar when installing -->
+                    <plugin>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <!-- Generate the javadoc jar when installing -->
+                    <plugin>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>attach-javadocs</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                                <configuration>
+                                    <links>
+                                        <link>${javadocLink}</link>
+                                        <link>http://junit.org/junit/javadoc/4.5/</link>
+                                    </links>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+</project>
